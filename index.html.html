@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — AI Video Editor & Automation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111114;
+    --bg3: #18181d;
+    --accent: #c8f04d;
+    --accent2: #9ef0b2;
+    --text: #f0ede8;
+    --muted: #888580;
+    --border: rgba(255,255,255,0.08);
+    --card: #14141a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent);
+    color: #0a0a0b !important;
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  section { padding: 5rem 1.5rem; max-width: 640px; margin: 0 auto; }
+
+  #home {
+    padding-top: 7.5rem;
+    padding-bottom: 4rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(200,240,77,0.1);
+    border: 1px solid rgba(200,240,77,0.25);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 8vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.07;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
+  }
+  h1 .hl { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2.5rem; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+
+  .divider { border: none; border-top: 1px solid var(--border); max-width: 640px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+
+  .about-grid { display: grid; gap: 1.5rem; }
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+  .about-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #0a0a0b;
+    margin-bottom: 1rem;
+  }
+  .about-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  .about-title-tag { font-size: 0.82rem; color: var(--accent); margin-bottom: 1rem; }
+  .about-body { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+  .about-body strong { color: var(--text); }
+
+  .tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+  .tool-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .services-grid { display: grid; gap: 1rem; }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover { border-color: rgba(200,240,77,0.2); transform: translateY(-2px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .service-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .service-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+  .service-badge {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,240,77,0.08);
+    border: 1px solid rgba(200,240,77,0.18);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+  }
+
+  .portfolio-grid { display: grid; gap: 1rem; }
+  .portfolio-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .portfolio-card:hover { transform: translateY(-2px); border-color: rgba(200,240,77,0.2); }
+  .portfolio-thumb {
+    aspect-ratio: 16/9;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-thumb-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #14141a 0%, #1e1e28 50%, #141420 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .play-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #0a0a0b;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .portfolio-card:hover .play-btn { transform: scale(1.1); }
+  .thumb-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .portfolio-info { padding: 1.1rem 1.25rem; }
+  .portfolio-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+  .portfolio-meta { font-size: 0.8rem; color: var(--muted); }
+
+  .portfolio-cta {
+    background: var(--bg3);
+    border: 1px dashed rgba(200,240,77,0.3);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .portfolio-cta p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .contact-headline {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.6rem;
+  }
+  .contact-sub { font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem; }
+
+  .contact-links { display: grid; gap: 0.75rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover { border-color: rgba(200,240,77,0.3); transform: translateX(3px); }
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .icon-wa { background: rgba(37,211,102,0.12); }
+  .icon-em { background: rgba(200,240,77,0.1); }
+  .icon-po { background: rgba(158,158,255,0.12); }
+  .contact-label { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.1rem; }
+  .contact-value { font-size: 0.92rem; font-weight: 500; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+  .footer-note { font-size: 0.78rem; color: var(--muted); }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">YourName.ai</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="badge fade-in"><span class="dot"></span> Available for new clients</div>
+  <h1 class="fade-in">I turn content into<br><span class="hl">viral moments.</span></h1>
+  <p class="hero-sub fade-in">AI-powered video editing and content automation for brands, creators, and businesses who want to grow fast — without wasting time.</p>
+  <div class="hero-actions fade-in">
+    <a href="#contact" class="btn-primary">→ Let's Work Together</a>
+    <a href="#portfolio" class="btn-ghost">See My Work</a>
+  </div>
+  <div class="hero-stats fade-in">
+    <div>
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Videos Delivered</div>
+    </div>
+    <div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div>
+      <div class="stat-num">48h</div>
+      <div class="stat-label">Avg. Turnaround</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="section-label fade-in">About Me</div>
+  <h2 class="fade-in">The editor who speaks<br>algorithm.</h2>
+  <div class="about-grid fade-in">
+    <div class="about-card">
+      <div class="about-avatar">YN</div>
+      <div class="about-name">Your Name</div>
+      <div class="about-title-tag">AI Video Editor & Automation Specialist</div>
+      <div class="about-body">
+        I'm a freelance video editor based in the Philippines who combines <strong>creative storytelling</strong> with <strong>cutting-edge AI tools</strong> to produce content that gets results — more views, more clicks, more clients for your brand.<br><br>
+        I work with coaches, agencies, and entrepreneurs who want professional content without the long wait times or bloated freelancer rates. I don't just edit — I help you build a <strong>content system that scales</strong>.
+      </div>
+      <div class="tools-row">
+        <span class="tool-tag">CapCut</span>
+        <span class="tool-tag">Premiere Pro</span>
+        <span class="tool-tag">HeyGen</span>
+        <span class="tool-tag">Veo / Sora</span>
+        <span class="tool-tag">Descript</span>
+        <span class="tool-tag">ElevenLabs</span>
+        <span class="tool-tag">RunwayML</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="services">
+  <div class="section-label fade-in">What I Do</div>
+  <h2 class="fade-in">Services built for<br>the short-form era.</h2>
+  <p class="section-sub fade-in">Every package is built around speed, quality, and content that actually performs on today's platforms.</p>
+
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">🎬</div>
+      <div class="service-title">AI Video Editing — Shorts & Ads</div>
+      <div class="service-desc">High-retention short-form videos and performance ads edited with AI-assisted workflows. Hook-first structure, fast cuts, captions, and sound design optimized for TikTok, Reels, and YouTube Shorts.</div>
+      <span class="service-badge">Most Popular</span>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">📲</div>
+      <div class="service-title">YouTube Shorts & Reels Editing</div>
+      <div class="service-desc">Scroll-stopping vertical videos with punchy hooks, dynamic text animations, auto-captions, and platform-specific aspect ratios. Built to grow your channel and follower count.</div>
+      <span class="service-badge">High Demand</span>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">🤖</div>
+      <div class="service-title">AI-Generated Content</div>
+      <div class="service-desc">Fully AI-produced videos using HeyGen avatars, Veo/Sora visuals, and ElevenLabs voiceovers. No camera needed — just send me a script and I'll produce a polished video from scratch.</div>
+      <span class="service-badge">AI-Powered</span>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">♻️</div>
+      <div class="service-title">Content Repurposing</div>
+      <div class="service-desc">Turn your long-form podcasts, webinars, or talking-head videos into 10–20 short clips per recording. Maximize every piece of content you already have — zero extra effort on your end.</div>
+      <span class="service-badge">Best Value</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="portfolio">
+  <div class="section-label fade-in">My Work</div>
+  <h2 class="fade-in">Results you can see.</h2>
+  <p class="section-sub fade-in">A selection of recent projects. More samples available on request or via my portfolio link.</p>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-card fade-in">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-inner">
+          <div class="play-btn">▶</div>
+          <span class="thumb-label">AI Brand Ad · 0:30</span>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-title">AI-Generated Brand Ad — SaaS Client</div>
+        <div class="portfolio-meta">HeyGen Avatar · ElevenLabs Voice · Premiere Pro</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-in">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-inner">
+          <div class="play-btn">▶</div>
+          <span class="thumb-label">Podcast Clip · 0:58</span>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-title">Podcast Repurposing — Coach Channel</div>
+        <div class="portfolio-meta">Content Repurposing · Auto-Captions · Reels Format</div>
+      </div>
+    </div>
+    <div class="portfolio-card fade-in">
+      <div class="portfolio-thumb">
+        <div class="portfolio-thumb-inner">
+          <div class="play-btn">▶</div>
+          <span class="thumb-label">YouTube Short · 0:45</span>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-title">Viral-Style YouTube Short — Creator</div>
+        <div class="portfolio-meta">Hook Edit · CapCut + Runway · 120K+ Views</div>
+      </div>
+    </div>
+    <div class="portfolio-cta fade-in">
+      <p>Want to see the full portfolio with live video samples?</p>
+      <a href="#contact" class="btn-primary">→ Request Portfolio Link</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="section-label fade-in">Get In Touch</div>
+  <h2 class="fade-in">Ready to grow your<br>content game?</h2>
+
+  <div class="contact-card fade-in">
+    <div class="contact-headline">Let's talk about your project.</div>
+    <div class="contact-sub">Reply within 24 hours. No fluff, just results. Drop a message on WhatsApp or email — let's start.</div>
+
+    <div class="contact-links">
+      <a href="https://wa.me/639XXXXXXXXX" class="contact-link">
+        <div class="contact-icon icon-wa">📱</div>
+        <div>
+          <div class="contact-label">Fastest Response</div>
+          <div class="contact-value">WhatsApp Me</div>
+        </div>
+        <span style="margin-left:auto; color: var(--muted); font-size:0.8rem;">→</span>
+      </a>
+      <a href="mailto:youremail@gmail.com" class="contact-link">
+        <div class="contact-icon icon-em">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">youremail@gmail.com</div>
+        </div>
+        <span style="margin-left:auto; color: var(--muted); font-size:0.8rem;">→</span>
+      </a>
+      <a href="https://drive.google.com/your-portfolio" class="contact-link">
+        <div class="contact-icon icon-po">🎞️</div>
+        <div>
+          <div class="contact-label">Portfolio</div>
+          <div class="contact-value">View Video Samples</div>
+        </div>
+        <span style="margin-left:auto; color: var(--muted); font-size:0.8rem;">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">YourName.ai</div>
+  <div class="footer-note">© 2025 · AI Video Editor & Automation Specialist · Philippines 🇵🇭</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
